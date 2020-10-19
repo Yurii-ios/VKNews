@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F13B411B253DFC520078834B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B411A253DFC520078834B /* FeedViewController.swift */; };
 		F13B411D253DFC740078834B /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13B411C253DFC740078834B /* FeedViewController.storyboard */; };
+		F13B4121253E07130078834B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B4120253E07130078834B /* NetworkService.swift */; };
+		F13B4123253E0A200078834B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B4122253E0A200078834B /* API.swift */; };
 		F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14DCC0A253B75FA00CE5249 /* AuthService.swift */; };
 		F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */; };
 		F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1815859253B6DC7007B2BAC /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 		D1D10A51366C2690CE65D2F2 /* Pods_VKNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13B411A253DFC520078834B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F13B411C253DFC740078834B /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
+		F13B4120253E07130078834B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F13B4122253E0A200078834B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F14DCC0A253B75FA00CE5249 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		F1815856253B6DC7007B2BAC /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				F14DCC0A253B75FA00CE5249 /* AuthService.swift */,
+				F13B4120253E07130078834B /* NetworkService.swift */,
+				F13B4122253E0A200078834B /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -273,7 +279,9 @@
 				F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */,
 				F13B411B253DFC520078834B /* FeedViewController.swift in Sources */,
 				F181585C253B6DC7007B2BAC /* SceneDelegate.swift in Sources */,
+				F13B4121253E07130078834B /* NetworkService.swift in Sources */,
 				F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */,
+				F13B4123253E0A200078834B /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
