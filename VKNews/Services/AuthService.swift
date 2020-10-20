@@ -28,6 +28,10 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     }
     weak var delegate: AuthServiceDelegate?
     
+    var token: String? {
+        return VKSdk.accessToken()?.accessToken
+    }
+    
     func wakeUpSession() {
         // Права доступа определяют возможность использования токена для работы с тем или иным разделом данных.
         let scope = ["offline"]
