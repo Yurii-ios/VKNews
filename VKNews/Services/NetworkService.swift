@@ -53,7 +53,7 @@ final class NetworkService: Networking {
         components.path = path
         // ostalnoe w stroke zaprosa
         components.queryItems = params.map({ URLQueryItem(name: $0, value: $1)})
-        
+        print(components.url!)
        return components.url!
         
     }

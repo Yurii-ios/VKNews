@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1244ED3253F73540039D8D0 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1244ED2253F73540039D8D0 /* FeedResponse.swift */; };
+		F1244ED5253F7C5C0039D8D0 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1244ED4253F7C5C0039D8D0 /* NetworkDataFetcher.swift */; };
 		F13B411B253DFC520078834B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B411A253DFC520078834B /* FeedViewController.swift */; };
 		F13B411D253DFC740078834B /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13B411C253DFC740078834B /* FeedViewController.storyboard */; };
 		F13B4121253E07130078834B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B4120253E07130078834B /* NetworkService.swift */; };
@@ -40,6 +42,8 @@
 		52C32C9B444B2E10024E5FD0 /* Pods-VKNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNews.debug.xcconfig"; path = "Target Support Files/Pods-VKNews/Pods-VKNews.debug.xcconfig"; sourceTree = "<group>"; };
 		6D44BC82B05256FC4CBF8D48 /* Pods-VKNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNews.release.xcconfig"; path = "Target Support Files/Pods-VKNews/Pods-VKNews.release.xcconfig"; sourceTree = "<group>"; };
 		D1D10A51366C2690CE65D2F2 /* Pods_VKNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1244ED2253F73540039D8D0 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		F1244ED4253F7C5C0039D8D0 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		F13B411A253DFC520078834B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F13B411C253DFC740078834B /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		F13B4120253E07130078834B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -98,6 +102,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F1244ED1253F73080039D8D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1244ED2253F73540039D8D0 /* FeedResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F13B411E253DFD5A0078834B /* FeedVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +131,11 @@
 		F14DCC0D253B760200CE5249 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F1244ED1253F73080039D8D0 /* Models */,
 				F14DCC0A253B75FA00CE5249 /* AuthService.swift */,
-				F13B4120253E07130078834B /* NetworkService.swift */,
 				F13B4122253E0A200078834B /* API.swift */,
+				F13B4120253E07130078834B /* NetworkService.swift */,
+				F1244ED4253F7C5C0039D8D0 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,11 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1244ED3253F73540039D8D0 /* FeedResponse.swift in Sources */,
 				F181585E253B6DC7007B2BAC /* AuthViewController.swift in Sources */,
 				F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */,
 				F13B411B253DFC520078834B /* FeedViewController.swift in Sources */,
 				F181585C253B6DC7007B2BAC /* SceneDelegate.swift in Sources */,
 				F13B4121253E07130078834B /* NetworkService.swift in Sources */,
+				F1244ED5253F7C5C0039D8D0 /* NetworkDataFetcher.swift in Sources */,
 				F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */,
 				F13B4123253E0A200078834B /* API.swift in Sources */,
 			);

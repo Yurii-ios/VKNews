@@ -34,7 +34,7 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
     func wakeUpSession() {
         // Права доступа определяют возможность использования токена для работы с тем или иным разделом данных.
-        let scope = ["offline"]
+        let scope = ["wall", "friends"]
         
         VKSdk.wakeUpSession(scope) { [weak self] (authorizationState, error) in
             switch authorizationState {
