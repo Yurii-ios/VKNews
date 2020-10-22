@@ -16,20 +16,10 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
 
   var interactor: NewsFeedBusinessLogic?
   var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
-
-  // MARK: Object lifecycle
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
+    @IBOutlet var table: UITableView!
+    
+    // MARK: Setup
   
   private func setup() {
     let viewController        = self
@@ -51,10 +41,41 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setup()
+    // registriryem ja4ejky
+    table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
-
+    switch viewModel {
+    case .displayNewsFeed:
+        print("displayNewsFeed viewController")
+    case .some:
+        print("some viewCntroller")
+    }
   }
   
+}
+
+//MARK: - TableView Delegate, UITableViewDataSource
+
+// wuwodim ja4ejki na ekran table view
+extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
+        cell.textLabel?.text = "Test Test Test"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("user taped ")
+        interactor?.makeRequest(request: .getFeed)
+    }
+    
 }

@@ -19,7 +19,7 @@
 		F13C60572540C0D500ED13D9 /* NewsFeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C60502540C0D500ED13D9 /* NewsFeedModels.swift */; };
 		F13C60582540C0D500ED13D9 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C60512540C0D500ED13D9 /* NewsFeedViewController.swift */; };
 		F13C60592540C0D500ED13D9 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C60522540C0D500ED13D9 /* NewsFeedInteractor.swift */; };
-		F13C605A2540C0D500ED13D9 /* NewsFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13C60532540C0D500ED13D9 /* NewsFeedViewController.xib */; };
+		F13C605C2540D11400ED13D9 /* NewsFeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13C605B2540D11400ED13D9 /* NewsFeedViewController.storyboard */; };
 		F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14DCC0A253B75FA00CE5249 /* AuthService.swift */; };
 		F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */; };
 		F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1815859253B6DC7007B2BAC /* AppDelegate.swift */; };
@@ -61,7 +61,7 @@
 		F13C60502540C0D500ED13D9 /* NewsFeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedModels.swift; sourceTree = "<group>"; };
 		F13C60512540C0D500ED13D9 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		F13C60522540C0D500ED13D9 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
-		F13C60532540C0D500ED13D9 /* NewsFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedViewController.xib; sourceTree = "<group>"; };
+		F13C605B2540D11400ED13D9 /* NewsFeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsFeedViewController.storyboard; sourceTree = "<group>"; };
 		F14DCC0A253B75FA00CE5249 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		F1815856253B6DC7007B2BAC /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,13 +145,13 @@
 		F13C604C2540C07000ED13D9 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				F13C604D2540C0D500ED13D9 /* NewsFeedPresenter.swift */,
-				F13C604E2540C0D500ED13D9 /* NewsFeedWorker.swift */,
-				F13C604F2540C0D500ED13D9 /* NewsFeedRouter.swift */,
-				F13C60502540C0D500ED13D9 /* NewsFeedModels.swift */,
+				F13C605B2540D11400ED13D9 /* NewsFeedViewController.storyboard */,
 				F13C60512540C0D500ED13D9 /* NewsFeedViewController.swift */,
 				F13C60522540C0D500ED13D9 /* NewsFeedInteractor.swift */,
-				F13C60532540C0D500ED13D9 /* NewsFeedViewController.xib */,
+				F13C604D2540C0D500ED13D9 /* NewsFeedPresenter.swift */,
+				F13C60502540C0D500ED13D9 /* NewsFeedModels.swift */,
+				F13C604F2540C0D500ED13D9 /* NewsFeedRouter.swift */,
+				F13C604E2540C0D500ED13D9 /* NewsFeedWorker.swift */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F13C605A2540C0D500ED13D9 /* NewsFeedViewController.xib in Resources */,
+				F13C605C2540D11400ED13D9 /* NewsFeedViewController.storyboard in Resources */,
 				F1815866253B6DC9007B2BAC /* LaunchScreen.storyboard in Resources */,
 				F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */,
 				F1815863253B6DC9007B2BAC /* Assets.xcassets in Resources */,
