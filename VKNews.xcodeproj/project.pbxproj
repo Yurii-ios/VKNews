@@ -29,6 +29,8 @@
 		F1815866253B6DC9007B2BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1815864253B6DC9007B2BAC /* LaunchScreen.storyboard */; };
 		F1D50C28253CCA380004C66A /* Pods_VKNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D50C27253CCA380004C66A /* Pods_VKNews.framework */; };
 		F1D50C29253CCA380004C66A /* Pods_VKNews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F1D50C27253CCA380004C66A /* Pods_VKNews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F1F48C69254452EC00C1CABD /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F48C68254452EC00C1CABD /* NewsFeedCell.swift */; };
+		F1F48C6B2544534400C1CABD /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F48C6A2544534400C1CABD /* NewsFeedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +80,8 @@
 		F1D50C27253CCA380004C66A /* Pods_VKNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VKNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D50C2B253CCA460004C66A /* VKSdkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = VKSdkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D50C2E253CCA620004C66A /* VK_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VK_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1F48C68254452EC00C1CABD /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
+		F1F48C6A2544534400C1CABD /* NewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 		F13C604C2540C07000ED13D9 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F1F48C672544529600C1CABD /* Cell */,
 				F13C605B2540D11400ED13D9 /* NewsFeedViewController.storyboard */,
 				F13C60512540C0D500ED13D9 /* NewsFeedViewController.swift */,
 				F13C60522540C0D500ED13D9 /* NewsFeedInteractor.swift */,
@@ -200,6 +205,15 @@
 				F1815867253B6DC9007B2BAC /* Info.plist */,
 			);
 			path = VKNews;
+			sourceTree = "<group>";
+		};
+		F1F48C672544529600C1CABD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F1F48C68254452EC00C1CABD /* NewsFeedCell.swift */,
+				F1F48C6A2544534400C1CABD /* NewsFeedCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +278,7 @@
 			files = (
 				F13C605C2540D11400ED13D9 /* NewsFeedViewController.storyboard in Resources */,
 				F1815866253B6DC9007B2BAC /* LaunchScreen.storyboard in Resources */,
+				F1F48C6B2544534400C1CABD /* NewsFeedCell.xib in Resources */,
 				F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */,
 				F1815863253B6DC9007B2BAC /* Assets.xcassets in Resources */,
 				F13B411D253DFC740078834B /* FeedViewController.storyboard in Resources */,
@@ -333,6 +348,7 @@
 				F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */,
 				F13B4123253E0A200078834B /* API.swift in Sources */,
 				F13C60572540C0D500ED13D9 /* NewsFeedModels.swift in Sources */,
+				F1F48C69254452EC00C1CABD /* NewsFeedCell.swift in Sources */,
 				F13C60582540C0D500ED13D9 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
