@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F1244ED3253F73540039D8D0 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1244ED2253F73540039D8D0 /* FeedResponse.swift */; };
 		F1244ED5253F7C5C0039D8D0 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1244ED4253F7C5C0039D8D0 /* NetworkDataFetcher.swift */; };
-		F13B411B253DFC520078834B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B411A253DFC520078834B /* FeedViewController.swift */; };
-		F13B411D253DFC740078834B /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13B411C253DFC740078834B /* FeedViewController.storyboard */; };
 		F13B4121253E07130078834B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B4120253E07130078834B /* NetworkService.swift */; };
 		F13B4123253E0A200078834B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B4122253E0A200078834B /* API.swift */; };
 		F13C60542540C0D500ED13D9 /* NewsFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C604D2540C0D500ED13D9 /* NewsFeedPresenter.swift */; };
@@ -53,8 +51,6 @@
 		D1D10A51366C2690CE65D2F2 /* Pods_VKNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1244ED2253F73540039D8D0 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
 		F1244ED4253F7C5C0039D8D0 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
-		F13B411A253DFC520078834B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		F13B411C253DFC740078834B /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		F13B4120253E07130078834B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F13B4122253E0A200078834B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F13C604D2540C0D500ED13D9 /* NewsFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedPresenter.swift; sourceTree = "<group>"; };
@@ -128,15 +124,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F13B411E253DFD5A0078834B /* FeedVC */ = {
-			isa = PBXGroup;
-			children = (
-				F13B411A253DFC520078834B /* FeedViewController.swift */,
-				F13B411C253DFC740078834B /* FeedViewController.storyboard */,
-			);
-			path = FeedVC;
-			sourceTree = "<group>";
-		};
 		F13B411F253DFD8E0078834B /* AuthVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +183,6 @@
 			children = (
 				F1815859253B6DC7007B2BAC /* AppDelegate.swift */,
 				F181585B253B6DC7007B2BAC /* SceneDelegate.swift */,
-				F13B411E253DFD5A0078834B /* FeedVC */,
 				F13B411F253DFD8E0078834B /* AuthVC */,
 				F13C604C2540C07000ED13D9 /* NewsFeed */,
 				F14DCC0D253B760200CE5249 /* Services */,
@@ -281,7 +267,6 @@
 				F1F48C6B2544534400C1CABD /* NewsFeedCell.xib in Resources */,
 				F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */,
 				F1815863253B6DC9007B2BAC /* Assets.xcassets in Resources */,
-				F13B411D253DFC740078834B /* FeedViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +324,6 @@
 				F181585E253B6DC7007B2BAC /* AuthViewController.swift in Sources */,
 				F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */,
 				F13C60592540C0D500ED13D9 /* NewsFeedInteractor.swift in Sources */,
-				F13B411B253DFC520078834B /* FeedViewController.swift in Sources */,
 				F181585C253B6DC7007B2BAC /* SceneDelegate.swift in Sources */,
 				F13B4121253E07130078834B /* NetworkService.swift in Sources */,
 				F1244ED5253F7C5C0039D8D0 /* NetworkDataFetcher.swift in Sources */,

@@ -22,7 +22,7 @@ struct FeedItem: Decodable {
     let date: Double
     let comments: CountableItem?
     let likes: CountableItem?
-    let reposrs: CountableItem?
+    let reposts: CountableItem?
     let views: CountableItem?
 }
 
