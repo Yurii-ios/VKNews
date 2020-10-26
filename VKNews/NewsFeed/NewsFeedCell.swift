@@ -22,7 +22,7 @@ class NewsFeedCell: UITableViewCell {
     // identifikator dlia registracii ja4ejki
     static let reuseId = "NewsFeedCell"
     
-    @IBOutlet var iconImageView: UIImageView!
+    @IBOutlet var iconImageView: WebImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
@@ -39,6 +39,7 @@ class NewsFeedCell: UITableViewCell {
     }
     
     func set(viewModel: FeedCellViewModel) {
+        iconImageView.set(imageURL: viewModel.iconUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         textLabel?.text = viewModel.text
