@@ -32,6 +32,7 @@ enum NewsFeed {
 // sozdaem skelet dlia FeedCellViewModel 4tobu peredat w nego dannue dlia Cell XIB
 struct FeedViewModel {
     struct Cell: FeedCellViewModel {
+        var photoAttachement: FeedCellPhotoAttachementViewModel?
         var iconUrlString: String
         var name: String
         var date: String
@@ -41,6 +42,10 @@ struct FeedViewModel {
         var shares: String?
         var views: String?
     }
-    
+    struct FeedCellPhotoAttachement: FeedCellPhotoAttachementViewModel {
+        var photoUrlString: String?
+        var width: Int
+        var height: Int
+    }
     let cells: [Cell]
 }
