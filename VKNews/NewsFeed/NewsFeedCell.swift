@@ -33,6 +33,7 @@ class NewsFeedCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
+    @IBOutlet var cardView: UIView!
     @IBOutlet var postLabel: UILabel!
     
     @IBOutlet var likesLabel: UILabel!
@@ -44,6 +45,13 @@ class NewsFeedCell: UITableViewCell {
         super.awakeFromNib()
         iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
         iconImageView.clipsToBounds = true
+        
+        cardView.layer.cornerRadius = 10
+        cardView.clipsToBounds = true
+        
+        backgroundColor = .clear
+        
+        selectionStyle = .none
     }
     
     func set(viewModel: FeedCellViewModel) {
