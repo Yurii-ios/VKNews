@@ -50,7 +50,8 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
     table.separatorStyle = .none
     table.backgroundColor = .clear
     view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-    
+    // registriruem ja4ejky clasa NewsFeedCodeCell
+    table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
   }
   
   func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
@@ -73,15 +74,18 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.reuseId, for: indexPath) as! NewsFeedCell
-        let cellViewModel = feedViewModel.cells[indexPath.row]
-        cell.set(viewModel: cellViewModel)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.reuseId, for: indexPath) as! NewsFeedCell
+//        let cellViewModel = feedViewModel.cells[indexPath.row]
+//        cell.set(viewModel: cellViewModel)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
+        cell.textLabel?.text = "index: \(indexPath.row)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = feedViewModel.cells[indexPath.row]
-        
+        return 212
         return cellViewModel.sizes.totalHeight
+        
     }
 }
