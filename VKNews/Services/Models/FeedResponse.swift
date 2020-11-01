@@ -61,6 +61,7 @@ struct Group: Decodable, ProfileRepresentable {
 
 struct Attachment: Decodable {
     let photo: Photo?
+    //if we want to add video , gif...
 }
 
 struct Photo: Decodable {

@@ -14,6 +14,7 @@ protocol NewsFeedPresentationLogic {
 
 class NewsFeedPresenter: NewsFeedPresentationLogic {
     weak var viewController: NewsFeedDisplayLogic?
+    var cellLayoutCalculator: FeedCellLayoutCalculatorProtocol = FeedCellLayoutCalculator()
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -39,16 +40,18 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         let photoAttachement = self.photoAttachement(feedItem: feedItem)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachement: photoAttachement)
         
-        return FeedViewModel.Cell.init( photoAttachement: photoAttachement,
-            iconUrlString: profile.photo,
-            name: profile.name,
-            date: dateTitle,
-            text: feedItem.text,
-            likes: String(feedItem.likes?.count ?? 0),
-            comments: String(feedItem.comments?.count ?? 0),
-            shares: String(feedItem.reposts?.count ?? 0),
-            views: String(feedItem.views?.count ?? 0))
+        return FeedViewModel.Cell(sizes: sizes,
+                                  photoAttachement: photoAttachement,
+                                  iconUrlString: profile.photo,
+                                  name: profile.name,
+                                  date: dateTitle,
+                                  text: feedItem.text,
+                                  likes: String(feedItem.likes?.count ?? 0),
+                                  comments: String(feedItem.comments?.count ?? 0),
+                                  shares: String(feedItem.reposts?.count ?? 0),
+                                  views: String(feedItem.views?.count ?? 0))
     }
     
     private func profile(for sourseId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {

@@ -17,7 +17,17 @@ protocol FeedCellViewModel {
     var shares: String? { get }
     var views: String? { get }
     var photoAttachement: FeedCellPhotoAttachementViewModel? { get }
+    var sizes:FeedCellSizes { get }
 }
+
+protocol FeedCellSizes {
+    var postLabelFrame: CGRect { get }
+    var attachementFrame: CGRect { get }
+    var bottonViewFrame: CGRect { get }
+    // weli4ina i razmer ja4ejki
+    var totalHeight: CGFloat { get }
+}
+
 protocol FeedCellPhotoAttachementViewModel {
     var photoUrlString: String? { get }
     var width: Int { get }
@@ -40,6 +50,13 @@ class NewsFeedCell: UITableViewCell {
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var shareLabel: UILabel!
     @IBOutlet var viewsLabel: UILabel!
+    @IBOutlet var bottomView: UIView!
+    
+    // metod gotovit ja4ejky dlia mnogokratnogo ispolzowanija , yberaja effekt staroj informacii w ja4ejke pered pokazom nowogo soderzumogo
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,11 +75,14 @@ class NewsFeedCell: UITableViewCell {
         iconImageView.set(imageURL: viewModel.iconUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
-        textLabel?.text = viewModel.text
+        postLabel.text = viewModel.text
         likesLabel.text = viewModel.likes
         commentsLabel.text = viewModel.comments
         shareLabel.text = viewModel.shares
         viewsLabel.text = viewModel.views
+        postLabel.frame = viewModel.sizes.postLabelFrame
+        postImageView.frame = viewModel.sizes.attachementFrame
+        bottomView.frame = viewModel.sizes.bottonViewFrame
         
         if let photoAttachement = viewModel.photoAttachement {
             postImageView.set(imageURL: photoAttachement.photoUrlString)

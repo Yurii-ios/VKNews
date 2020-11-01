@@ -9,7 +9,7 @@ import UIKit
 
 class WebImageView: UIImageView {
     func set(imageURL: String?) {
-        guard let imageURL = imageURL, let url = URL(string: imageURL) else { return }
+        guard let imageURL = imageURL, let url = URL(string: imageURL) else { self.image = nil; return }
         
         // proweriaem zagryzenu li izobrazenija
         if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)) {
