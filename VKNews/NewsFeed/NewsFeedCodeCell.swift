@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol NewsFeedCodeCellDelegate: class {
+    func revealPost(for cell: NewsFeedCodeCell)
+}
+
 final class NewsFeedCodeCell: UITableViewCell {
+    
+    weak var delegate: NewsFeedCodeCellDelegate?
     
     static let reuseId = "NewsFeedCodeCell"
     //perwuj sloj
@@ -30,6 +36,17 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.font = Constants.postLabelFont
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return label
+    }()
+    
+    // knopka kotoraja raskruwaet tekst posta, kogda ego slishkom mnogo
+    let moreTextButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15,weight: .medium)
+        button.setTitleColor(#colorLiteral(red: 0.4, green: 0.6235294118, blue: 0.831372549, alpha: 1), for: UIControl.State.normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.setTitle("Show more...", for: UIControl.State.normal)
+        return button
     }()
     
     let postImageView: WebImageView = {
@@ -164,13 +181,24 @@ final class NewsFeedCodeCell: UITableViewCell {
         return label
     }()
     
+    // metod gotovit ja4ejky dlia mnogokratnogo ispolzowanija , yberaja effekt staroj informacii w ja4ejke pered pokazom nowogo soderzumogo
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        iconImageView.layer.cornerRadius = Constants.topViewHeidht / 2
+        iconImageView.clipsToBounds = true
         
         backgroundColor = .clear
         selectionStyle = .none
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
+        
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
         
         overlayFirstLayer() // perwuj sloj
         overlaySecondLayer() // wtoroj sloj
@@ -181,6 +209,10 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+   @objc func moreTextButtonTouch() {
+    delegate?.revealPost(for: self)
     }
     
     func set(viewModel: FeedCellViewModel) {
@@ -195,6 +227,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachementFrame
         bottomView.frame = viewModel.sizes.bottonViewFrame
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachement = viewModel.photoAttachement {
             postImageView.set(imageURL: photoAttachement.photoUrlString)
@@ -212,6 +245,7 @@ final class NewsFeedCodeCell: UITableViewCell {
 private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
+        cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
         

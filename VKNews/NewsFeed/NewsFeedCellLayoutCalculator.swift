@@ -11,6 +11,7 @@ struct Sizes: FeedCellSizes {
     var bottonViewFrame: CGRect
     var totalHeight: CGFloat
     var postLabelFrame: CGRect
+    var moreTextButtonFrame: CGRect
     var attachementFrame: CGRect
 }
 
@@ -26,6 +27,9 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
     }
     
     func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?) -> FeedCellSizes {
+        
+        var showMoreTextButton = false
+        
         // wu4esliaem shuriny cardView
         let cardViewWigth = screenWigth - Constants.cardInserts.left - Constants.cardInserts.right
 
@@ -37,13 +41,31 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             // otnimaem w cardView po x: 8 i po y: 8 pointow
             let width = cardViewWigth - Constants.postLabelInserts.left - Constants.postLabelInserts.right
             // ystanawliwaem wusoty postLabellFrame w zawisimosti ot kontenta s y4etom rasmera shrifta
-            let height = text.height(width: width, font: Constants.postLabelFont)
+            var height = text.height(width: width, font: Constants.postLabelFont)
+            
+            // nastrojka limita teksta pri kotorom bydet pokazana knopka razwernyt tekst
+            let limitHeight = Constants.postLabelFont.lineHeight * Constants.minifiedPostLimitLines
+            if height > limitHeight {
+                height = Constants.postLabelFont.lineHeight * Constants.minifiedPostLines
+                showMoreTextButton = true
+            }
+            
             postLabellFrame.size = CGSize(width: width, height: height)
         }
         
+        //MARK: - Works with moreTextButtonFrame
+        
+        var moreTextButtonSize = CGSize.zero
+        if showMoreTextButton {
+            moreTextButtonSize = Constants.moreTextButtonSize
+        }
+        
+        let moreTextButtonOrigin = CGPoint(x: Constants.moreTextButtonInsets.left, y: postLabellFrame.maxY)
+        let moreTextButtonFrame = CGRect(origin: moreTextButtonOrigin, size: moreTextButtonSize)
+        
         //MARK: - Works with Attachmentframe
         // esli y postLabellFrame razmer = 0 to AttachmentTop zanimaet pozicujy srazy pod topView wmesto  postLabellFrame
-        let attachmentTop = postLabellFrame.size == CGSize.zero ? Constants.postLabelInserts.top : postLabellFrame.maxY + Constants.postLabelInserts.bottom
+        let attachmentTop = postLabellFrame.size == CGSize.zero ? Constants.postLabelInserts.top : moreTextButtonFrame.maxY + Constants.postLabelInserts.bottom
         var attachmentframe = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: CGSize.zero)
         // esli k nam prishla fotografija
         if let attachment = photoAttachement {
@@ -68,6 +90,7 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         return Sizes(bottonViewFrame: bottomViewFrame,
                      totalHeight: totalHeight,
                      postLabelFrame: postLabellFrame,
+                     moreTextButtonFrame: moreTextButtonFrame,
                      attachementFrame: attachmentframe)
     }
     

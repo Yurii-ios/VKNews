@@ -26,6 +26,8 @@ protocol FeedCellSizes {
     var bottonViewFrame: CGRect { get }
     // weli4ina i razmer ja4ejki
     var totalHeight: CGFloat { get }
+    
+    var moreTextButtonFrame: CGRect { get }
 }
 
 protocol FeedCellPhotoAttachementViewModel {
