@@ -13,16 +13,6 @@ struct Sizes: FeedCellSizes {
     var postLabelFrame: CGRect
     var attachementFrame: CGRect
 }
-// ystanawliwaem granicu CardView
-struct Constants {
-    static let cardInserts = UIEdgeInsets(top: 0, left: 8, bottom: 12, right: 8)
-    // wusota TopView
-    static let topViewHeidht: CGFloat = 36
-    //ystanawliwaem polozenie TopView w CardView
-    static let postLabelInserts = UIEdgeInsets(top: 8 + Constants.topViewHeidht + 8, left: 8, bottom: 8, right: 8)
-    static let postLabelFont = UIFont.systemFont(ofSize: 15)
-    static let bottomViewHeight: CGFloat = 44
-}
 
 protocol FeedCellLayoutCalculatorProtocol {
     func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?) -> FeedCellSizes
