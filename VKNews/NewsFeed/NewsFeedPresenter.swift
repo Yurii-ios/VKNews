@@ -25,9 +25,9 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
     
     func presentData(response: NewsFeed.Model.Response.ResponseType) {
         switch response {
-        case .presentNewsFeed(feed: let feed):
+        case .presentNewsFeed(feed: let feed, let revealdedPostIds):
             let cells = feed.items.map { (feedItem)  in
-                cellViewModel(feedItem: feedItem, profiles: feed.profiles, groups: feed.groups)
+                cellViewModel(feedItem: feedItem, profiles: feed.profiles, groups: feed.groups, revealdedPostIds: revealdedPostIds)
             }
             
             let feedViewModel = FeedViewModel(cells: cells)
@@ -35,14 +35,20 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         }
     }
     
-    private func cellViewModel(feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+    private func cellViewModel(feedItem: FeedItem, profiles: [Profile], groups: [Group], revealdedPostIds: [Int]) -> FeedViewModel.Cell {
         let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
         let photoAttachement = self.photoAttachement(feedItem: feedItem)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachement: photoAttachement)
+        //probegaemsia po masiwy i srawniwaem postId postow 
+        let isFullSized = revealdedPostIds.contains { (postId) -> Bool in
+            return postId == feedItem.postId
+        }
         
-        return FeedViewModel.Cell(sizes: sizes,
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachement: photoAttachement, isFullSizedPost: isFullSized)
+        
+        return FeedViewModel.Cell(postId: feedItem.postId,
+                                  sizes: sizes,
                                   photoAttachement: photoAttachement,
                                   iconUrlString: profile.photo,
                                   name: profile.name,

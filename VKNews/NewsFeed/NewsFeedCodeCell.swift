@@ -189,7 +189,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        // okrygliaem izobrazenie grypu
         iconImageView.layer.cornerRadius = Constants.topViewHeidht / 2
         iconImageView.clipsToBounds = true
         
@@ -197,7 +197,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         selectionStyle = .none
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
-        
+    
         moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
         
         overlayFirstLayer() // perwuj sloj
@@ -207,12 +207,9 @@ final class NewsFeedCodeCell: UITableViewCell {
         overlayFourthLayerOnBottomViewViews() // 4etwertuj sloj dlia bottomViewViews
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
    @objc func moreTextButtonTouch() {
-    delegate?.revealPost(for: self)
+    print("56678")
+   delegate?.revealPost(for: self)
     }
     
     func set(viewModel: FeedCellViewModel) {
@@ -226,7 +223,7 @@ final class NewsFeedCodeCell: UITableViewCell {
                 viewsLabel.text = viewModel.views
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachementFrame
-        bottomView.frame = viewModel.sizes.bottonViewFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachement = viewModel.photoAttachement {
@@ -242,7 +239,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.fillSuperview(padding: Constants.cardInserts)
     }
     
-private func overlaySecondLayer() {
+   private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
@@ -351,6 +348,10 @@ private func overlaySecondLayer() {
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 4).isActive = true
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

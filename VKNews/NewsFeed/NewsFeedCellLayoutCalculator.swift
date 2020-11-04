@@ -8,7 +8,7 @@
 import UIKit
 
 struct Sizes: FeedCellSizes {
-    var bottonViewFrame: CGRect
+    var bottomViewFrame: CGRect
     var totalHeight: CGFloat
     var postLabelFrame: CGRect
     var moreTextButtonFrame: CGRect
@@ -16,7 +16,7 @@ struct Sizes: FeedCellSizes {
 }
 
 protocol FeedCellLayoutCalculatorProtocol {
-    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?) -> FeedCellSizes
+    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?, isFullSizedPost: Bool) -> FeedCellSizes
 }
 
 final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
@@ -26,7 +26,7 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         self.screenWigth = screenWigth
     }
     
-    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?) -> FeedCellSizes {
+    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?, isFullSizedPost: Bool) -> FeedCellSizes {
         
         var showMoreTextButton = false
         
@@ -45,7 +45,7 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             
             // nastrojka limita teksta pri kotorom bydet pokazana knopka razwernyt tekst
             let limitHeight = Constants.postLabelFont.lineHeight * Constants.minifiedPostLimitLines
-            if height > limitHeight {
+            if !isFullSizedPost && height > limitHeight {
                 height = Constants.postLabelFont.lineHeight * Constants.minifiedPostLines
                 showMoreTextButton = true
             }
@@ -87,7 +87,7 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         //MARK: - Works with TotalHeight
         let totalHeight = bottomViewFrame.maxY + Constants.cardInserts.bottom
         
-        return Sizes(bottonViewFrame: bottomViewFrame,
+        return Sizes(bottomViewFrame: bottomViewFrame,
                      totalHeight: totalHeight,
                      postLabelFrame: postLabellFrame,
                      moreTextButtonFrame: moreTextButtonFrame,
@@ -95,3 +95,4 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
     }
     
 }
+

@@ -23,10 +23,10 @@ protocol FeedCellViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var attachementFrame: CGRect { get }
-    var bottonViewFrame: CGRect { get }
+    var bottomViewFrame: CGRect { get }
     // weli4ina i razmer ja4ejki
     var totalHeight: CGFloat { get }
-    
+    // knopka raskrutija teksta
     var moreTextButtonFrame: CGRect { get }
 }
 
@@ -84,7 +84,7 @@ class NewsFeedCell: UITableViewCell {
         viewsLabel.text = viewModel.views
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachementFrame
-        bottomView.frame = viewModel.sizes.bottonViewFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachement = viewModel.photoAttachement {
             postImageView.set(imageURL: photoAttachement.photoUrlString)

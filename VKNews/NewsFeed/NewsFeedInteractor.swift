@@ -16,7 +16,11 @@ class NewsFeedInteractor: NewsFeedBusinessLogic {
 
   var presenter: NewsFeedPresentationLogic?
   var service: NewsFeedService?
+    
+    private var feedResponse: FeedResponse?
   
+    private var revealPostIds = [Int]()
+    
     private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
     
   func makeRequest(request: NewsFeed.Model.Request.RequestType) {
@@ -31,11 +35,22 @@ class NewsFeedInteractor: NewsFeedBusinessLogic {
 //            feedResponse?.groups.map({ (profile)  in
 //                print(profile)
 //            })
+            self?.feedResponse = feedResponse
             
-            guard let feedResponse = feedResponse else { return }
-            self?.presenter?.presentData(response: .presentNewsFeed(feed: feedResponse))
+            
+            self?.presentFeed()
         }
+    case .revealPostIds(let postId):
+        // peredaem poly4enui Id postow w masiw, i etot masiw mu bydem peredavat kak parametr w presenter
+         revealPostIds.append(postId)
+        print(revealPostIds)
+        presentFeed()
     }
   }
+    
+    private func presentFeed() {
+        guard let feedResponse = feedResponse else { return }
+        presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feedResponse, revealPostIds: revealPostIds))
+    }
   
 }

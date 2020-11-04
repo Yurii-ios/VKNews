@@ -65,7 +65,13 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     //MARK: - NewsFeedCodeCellDelegate
     
     func revealPost(for cell: NewsFeedCodeCell) {
+        print("5555")
+        // poly4aem dostyp k postId, 4tobu poly4it dostyp k id posta 4tobu w dalnejshem raskrut wes tekst w poste
+        guard let indexPath = table.indexPath(for: cell) else { return }
+        // poly4aem dostyp k informacii ja4ejki
+        let cellViewModel = feedViewModel.cells[indexPath.row]
         
+        interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.revealPostIds(postId: cellViewModel.postId))
     }
     
 
@@ -94,5 +100,10 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let cellViewModel = feedViewModel.cells[indexPath.row]
         return cellViewModel.sizes.totalHeight
         
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        return cellViewModel.sizes.totalHeight
     }
 }
