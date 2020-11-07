@@ -35,7 +35,7 @@ struct FeedViewModel {
     struct Cell: FeedCellViewModel {
         var postId: Int
         var sizes: FeedCellSizes
-        var photoAttachement: FeedCellPhotoAttachementViewModel?
+        var photoAttachements: [FeedCellPhotoAttachementViewModel]
         var iconUrlString: String
         var name: String
         var date: String

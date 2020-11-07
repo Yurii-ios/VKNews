@@ -16,7 +16,7 @@ struct Sizes: FeedCellSizes {
 }
 
 protocol FeedCellLayoutCalculatorProtocol {
-    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?, isFullSizedPost: Bool) -> FeedCellSizes
+    func sizes(postText: String?, photoAttachements: [FeedCellPhotoAttachementViewModel], isFullSizedPost: Bool) -> FeedCellSizes
 }
 
 final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
@@ -26,13 +26,13 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         self.screenWigth = screenWigth
     }
     
-    func sizes(postText: String?, photoAttachement: FeedCellPhotoAttachementViewModel?, isFullSizedPost: Bool) -> FeedCellSizes {
+    func sizes(postText: String?, photoAttachements: [FeedCellPhotoAttachementViewModel], isFullSizedPost: Bool) -> FeedCellSizes {
         
         var showMoreTextButton = false
         
         // wu4esliaem shuriny cardView
         let cardViewWigth = screenWigth - Constants.cardInserts.left - Constants.cardInserts.right
-
+        
         //MARK: - Works with Labell Frame
         // ykazuwaem gde bydet raspologatsia nash postLabelFrame(opredeliae gde bydet raspologatsia lewuj werchnij ygol : x = 8, y = 52)
         var postLabellFrame = CGRect(origin: CGPoint(x: Constants.postLabelInserts.left, y: Constants.postLabelInserts.top), size: CGSize.zero)
@@ -68,14 +68,26 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         let attachmentTop = postLabellFrame.size == CGSize.zero ? Constants.postLabelInserts.top : moreTextButtonFrame.maxY + Constants.postLabelInserts.bottom
         var attachmentframe = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: CGSize.zero)
         // esli k nam prishla fotografija
-        if let attachment = photoAttachement {
-            // priwodim k tipy Float 4tobu poly4it bolee to4nue zna4enija , a ne 1 i 0 kak pri Int
-            print(attachment.width, attachment.height)
+        //        if let attachment = photoAttachements {
+        //            // priwodim k tipy Float 4tobu poly4it bolee to4nue zna4enija , a ne 1 i 0 kak pri Int
+        //            print(attachment.width, attachment.height)
+        //            let photoHeight: Float = Float(attachment.height)
+        //            let photoWeigth: Float = Float(attachment.width)
+        // otnoshenie wusotu k shurune(sootnoshenie storon)
+        //   let ratio = CGFloat(photoHeight / photoWeigth)
+        //   attachmentframe.size = CGSize(width: cardViewWigth, height: cardViewWigth * ratio)
+        //}
+        
+        if let attachment = photoAttachements.first {
             let photoHeight: Float = Float(attachment.height)
             let photoWeigth: Float = Float(attachment.width)
-            // otnoshenie wusotu k shurune(sootnoshenie storon)
+            //otnoshenie wusotu k shurune(sootnoshenie storon)
             let ratio = CGFloat(photoHeight / photoWeigth)
-            attachmentframe.size = CGSize(width: cardViewWigth, height: cardViewWigth * ratio)
+            if photoAttachements.count == 1 {
+                attachmentframe.size = CGSize(width: cardViewWigth, height: cardViewWigth * ratio)
+            } else if photoAttachements.count > 1 {
+                attachmentframe.size = CGSize(width: cardViewWigth, height: cardViewWigth * ratio)
+            }
         }
         
         //MARK: - Works with BottonViewFrame
