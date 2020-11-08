@@ -12,14 +12,16 @@ class GalleryCollectionView: UICollectionView {
     var photos = [FeedCellPhotoAttachementViewModel]()
 
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        super.init(frame: .zero, collectionViewLayout: layout)
+        
+        let rowLayout = RowLayout()
+        super.init(frame: .zero, collectionViewLayout: rowLayout)
         
         delegate = self
         dataSource = self
         
-        backgroundColor = .blue
+        backgroundColor = .white
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.reuseId)
     
     }
@@ -30,12 +32,12 @@ class GalleryCollectionView: UICollectionView {
     
     func set(photos: [FeedCellPhotoAttachementViewModel]) {
         self.photos = photos
-        
+        contentOffset = CGPoint.zero
         reloadData()
     }
 }
 
-extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RowLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -46,4 +48,18 @@ extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: frame.width, height: frame.height)
+    }
+ 
+    //MARK: - RowLayoutDelegate
+    func collectionView(_ collectionView: UICollectionView, photoAtIndexPath indexPath: IndexPath) -> CGSize {
+        let width = photos[indexPath.row].width
+        let height = photos[indexPath.row].height
+        
+        return CGSize(width: width, height: height)
+    }
+    
 }
