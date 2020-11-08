@@ -20,6 +20,8 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     private var feedViewModel = FeedViewModel(cells: [])
     @IBOutlet var table: UITableView!
     
+    private var titleView = TitleView()
+    
     // MARK: Setup
   
   private func setup() {
@@ -43,9 +45,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
+    setupTopBar()
     // registriryem ja4ejky
     table.register(UINib(nibName: "NewsFeedCell", bundle: nil),forCellReuseIdentifier: NewsFeedCell.reuseId)
     interactor?.makeRequest(request: .getNewsFeed)
+    interactor?.makeRequest(request: .getUser)
     
     table.separatorStyle = .none
     table.backgroundColor = .clear
@@ -59,8 +63,19 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     case .displayNewsFeed(feedViewModel: let feedViewModel):
         self.feedViewModel = feedViewModel
         table.reloadData()
+    case .displayUser(userViewModel: let userViewModel):
+        titleView.set(userViewModel: userViewModel)
     }
   }
+    
+    private func setupTopBar() {
+        // skruwaem kogda listaem wniz, i pojawl kogda listaem w werch
+        self.navigationController?.hidesBarsOnSwipe = true
+        
+        // dobawl titleView na nawbar
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView = titleView
+    }
     
     //MARK: - NewsFeedCodeCellDelegate
     
