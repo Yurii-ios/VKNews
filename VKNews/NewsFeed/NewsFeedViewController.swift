@@ -22,6 +22,13 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     
     private var titleView = TitleView()
     
+    // sozdaem indikator zagryzki
+    private var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     // MARK: Setup
   
   private func setup() {
@@ -46,23 +53,32 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     super.viewDidLoad()
     setup()
     setupTopBar()
-    // registriryem ja4ejky
-    table.register(UINib(nibName: "NewsFeedCell", bundle: nil),forCellReuseIdentifier: NewsFeedCell.reuseId)
+    setupTable()
+    
+    view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+    
     interactor?.makeRequest(request: .getNewsFeed)
     interactor?.makeRequest(request: .getUser)
-    
-    table.separatorStyle = .none
-    table.backgroundColor = .clear
-    view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-    // registriruem ja4ejky clasa NewsFeedCodeCell
-    table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
   }
+    
+    private func setupTable() {
+        // registriryem ja4ejky
+        table.register(UINib(nibName: "NewsFeedCell", bundle: nil),forCellReuseIdentifier: NewsFeedCell.reuseId)
+        // registriruem ja4ejky clasa NewsFeedCodeCell
+        table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+       
+        table.addSubview(refreshControl)
+    }
   
   func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
     switch viewModel {
     case .displayNewsFeed(feedViewModel: let feedViewModel):
         self.feedViewModel = feedViewModel
         table.reloadData()
+        // yberaem
+        refreshControl.endRefreshing()
     case .displayUser(userViewModel: let userViewModel):
         titleView.set(userViewModel: userViewModel)
     }
@@ -75,6 +91,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
         // dobawl titleView na nawbar
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = titleView
+    }
+    
+    // obnowliaem dannue pri swaipe w niz
+    @objc private func refresh() {
+        interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
     }
     
     //MARK: - NewsFeedCodeCellDelegate
