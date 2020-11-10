@@ -62,6 +62,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
   }
     
     private func setupTable() {
+
+        let topInset: CGFloat = 8
+        // otstyp ot nawBarom i 1 postom
+        table.contentInset.top = topInset
+        
         // registriryem ja4ejky
         table.register(UINib(nibName: "NewsFeedCell", bundle: nil),forCellReuseIdentifier: NewsFeedCell.reuseId)
         // registriruem ja4ejky clasa NewsFeedCodeCell
