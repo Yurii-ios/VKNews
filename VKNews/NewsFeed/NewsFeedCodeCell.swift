@@ -38,6 +38,7 @@ final class NewsFeedCodeCell: UITableViewCell {
 //        return label
 //    }()
     
+    // zameniaem UILabel na UITextView, potomy 4to y poslednego wstroen fynkcional dlia wu4islenija ssulok w tekste i perechoda po nim
     let postLabel: UITextView = {
         let textView = UITextView()
         textView.font = Constants.postLabelFont

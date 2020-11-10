@@ -37,7 +37,7 @@ class WebImageView: UIImageView {
         let cacheResponse = CachedURLResponse(response: response, data: data)
         URLCache.shared.storeCachedResponse(cacheResponse, for: URLRequest(url: responseUrl))
         
-        
+        //sowpadaet li ssulka na ety fotografijy s realnoj ssulkoj na ety fotografijy
         if responseUrl.absoluteString == currentUrlString {
             self.image = UIImage(data: data)
         }

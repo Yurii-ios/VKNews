@@ -68,6 +68,7 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
                                   views: formattedCounter(feedItem.views?.count))
     }
     
+    // podgotowra k otobraz inform o poste
     private func formattedCounter(_ counter: Int?) -> String? {
         guard let counter = counter, counter > 0 else { return nil }
         

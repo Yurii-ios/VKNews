@@ -22,7 +22,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     
     private var titleView = TitleView()
     
-    // sozdaem indikator zagryzki
+    // sozdaem indikator obnowlenija,
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -82,12 +82,19 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     case .displayNewsFeed(feedViewModel: let feedViewModel):
         self.feedViewModel = feedViewModel
         table.reloadData()
-        // yberaem
+        // yberaem refreshControl
         refreshControl.endRefreshing()
     case .displayUser(userViewModel: let userViewModel):
         titleView.set(userViewModel: userViewModel)
     }
   }
+    // metod fiksiryet tekys4ee mestopolożenie na ekrane
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        //esli polzynok nachodimsia niże polowinu ekrana
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNextBatch)
+        }
+    }
     
     private func setupTopBar() {
         // skruwaem kogda listaem wniz, i pojawl kogda listaem w werch
@@ -98,6 +105,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
         self.navigationItem.titleView = titleView
     }
     
+    //MARK: - Update data when swipe down
     // obnowliaem dannue pri swaipe w niz
     @objc private func refresh() {
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
