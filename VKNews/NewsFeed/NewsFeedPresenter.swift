@@ -30,11 +30,13 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
                 cellViewModel(feedItem: feedItem, profiles: feed.profiles, groups: feed.groups, revealdedPostIds: revealdedPostIds)
             }
             
-            let feedViewModel = FeedViewModel(cells: cells)
+            let feedViewModel = FeedViewModel(cells: cells, footerTitle: "\(cells.count) ")
             viewController?.displayData(viewModel: .displayNewsFeed(feedViewModel: feedViewModel))
         case .presentUserInfo(user: let user):
             let userViewModel = UserViewModel.init(photoUrlString: user?.photo100 ?? "")
             viewController?.displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData.displayUser(userViewModel: userViewModel))
+        case .presentFooterLoader:
+            viewController?.displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData.displayFooterLoader)
         }
     }
     

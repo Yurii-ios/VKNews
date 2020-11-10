@@ -17,10 +17,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
   var interactor: NewsFeedBusinessLogic?
   var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
   
-    private var feedViewModel = FeedViewModel(cells: [])
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     @IBOutlet var table: UITableView!
     
     private var titleView = TitleView()
+    private lazy var footerView = FooterView()
     
     // sozdaem indikator obnowlenija,
     private var refreshControl: UIRefreshControl = {
@@ -73,8 +74,8 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
         table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
         table.separatorStyle = .none
         table.backgroundColor = .clear
-       
         table.addSubview(refreshControl)
+        table.tableFooterView = footerView
     }
   
   func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
@@ -84,8 +85,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
         table.reloadData()
         // yberaem refreshControl
         refreshControl.endRefreshing()
+        footerView.setTitle(feedViewModel.footerTitle)
     case .displayUser(userViewModel: let userViewModel):
         titleView.set(userViewModel: userViewModel)
+    case .displayFooterLoader:
+        footerView.showLoader()
     }
   }
     // metod fiksiryet tekys4ee mestopolożenie na ekrane
