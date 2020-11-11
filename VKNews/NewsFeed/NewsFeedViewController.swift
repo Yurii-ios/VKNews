@@ -56,8 +56,6 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     setupTopBar()
     setupTable()
     
-    view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-    
     interactor?.makeRequest(request: .getNewsFeed)
     interactor?.makeRequest(request: .getUser)
   }
@@ -101,6 +99,16 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic,NewsFeedCod
     }
     
     private func setupTopBar() {
+        // ystraniaem otobrażenie lentu na topbare
+        let topBar = UIView(frame: UIApplication.shared.statusBarFrame)
+        topBar.backgroundColor = .white
+        //teni
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.3
+        topBar.layer.shadowOffset = CGSize.zero
+        topBar.layer.shadowRadius = 8
+        self.view.addSubview(topBar)
+        
         // skruwaem kogda listaem wniz, i pojawl kogda listaem w werch
         self.navigationController?.hidesBarsOnSwipe = true
         

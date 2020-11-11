@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-q1-m4T">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G3d-Ia-zGv">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -26,12 +30,16 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5WP-nh-hew"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="G3d-Ia-zGv" secondAttribute="bottom" id="4k4-wq-Fmf"/>
+                            <constraint firstItem="GZ2-q1-m4T" firstAttribute="top" secondItem="5WP-nh-hew" secondAttribute="top" id="FMZ-5n-DKm"/>
+                            <constraint firstItem="GZ2-q1-m4T" firstAttribute="trailing" secondItem="5WP-nh-hew" secondAttribute="trailing" id="Is2-JX-BFm"/>
                             <constraint firstItem="G3d-Ia-zGv" firstAttribute="trailing" secondItem="5WP-nh-hew" secondAttribute="trailing" id="O92-3e-FHz"/>
                             <constraint firstItem="G3d-Ia-zGv" firstAttribute="leading" secondItem="5WP-nh-hew" secondAttribute="leading" id="XXB-wM-21i"/>
                             <constraint firstItem="G3d-Ia-zGv" firstAttribute="top" secondItem="UgK-aE-XWL" secondAttribute="top" id="YNq-bx-HYR"/>
+                            <constraint firstItem="GZ2-q1-m4T" firstAttribute="leading" secondItem="5WP-nh-hew" secondAttribute="leading" id="s6y-er-WhD"/>
+                            <constraint firstItem="GZ2-q1-m4T" firstAttribute="bottom" secondItem="5WP-nh-hew" secondAttribute="bottom" id="xk3-Av-RRL"/>
                         </constraints>
                     </view>
                     <connections>
