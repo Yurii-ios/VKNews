@@ -26,6 +26,7 @@
 		F14338CC254B5FE4005469D3 /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14338CB254B5FE4005469D3 /* String + Height.swift */; };
 		F14DCC0B253B75FA00CE5249 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14DCC0A253B75FA00CE5249 /* AuthService.swift */; };
 		F14DCC11253B7B7300CE5249 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */; };
+		F17B56FE255C6B510088BB8F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B56FD255C6B510088BB8F /* GradientView.swift */; };
 		F181585A253B6DC7007B2BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1815859253B6DC7007B2BAC /* AppDelegate.swift */; };
 		F181585C253B6DC7007B2BAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181585B253B6DC7007B2BAC /* SceneDelegate.swift */; };
 		F181585E253B6DC7007B2BAC /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181585D253B6DC7007B2BAC /* AuthViewController.swift */; };
@@ -82,6 +83,7 @@
 		F14338CB254B5FE4005469D3 /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		F14DCC0A253B75FA00CE5249 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F14DCC10253B7B7300CE5249 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
+		F17B56FD255C6B510088BB8F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F1815856253B6DC7007B2BAC /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1815859253B6DC7007B2BAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F181585B253B6DC7007B2BAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				F13C604C2540C07000ED13D9 /* NewsFeed */,
 				F14DCC0D253B760200CE5249 /* Services */,
 				F1DB48F2254768A000CD1198 /* WebImageView.swift */,
+				F17B56FD255C6B510088BB8F /* GradientView.swift */,
 				F14338CB254B5FE4005469D3 /* String + Height.swift */,
 				F196CB5B254EFE6900809F60 /* Constraints.swift */,
 				F1815862253B6DC9007B2BAC /* Assets.xcassets */,
@@ -412,6 +415,7 @@
 				F1F48C69254452EC00C1CABD /* NewsFeedCell.swift in Sources */,
 				F1B4440525534FFC0070C017 /* GalleryCollectionView.swift in Sources */,
 				F13C60582540C0D500ED13D9 /* NewsFeedViewController.swift in Sources */,
+				F17B56FE255C6B510088BB8F /* GradientView.swift in Sources */,
 				F1C214D0254A05D20012312B /* NewsFeedCellLayoutCalculator.swift in Sources */,
 				F11AA230255848710001EAF7 /* InsetableTextField.swift in Sources */,
 			);

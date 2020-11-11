@@ -16,9 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-q1-m4T">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ2-q1-m4T" customClass="GradientView" customModule="VKNews" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="1" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="1" green="0.81568627450980391" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G3d-Ia-zGv">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
